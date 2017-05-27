@@ -32,7 +32,9 @@ public class mainBot {
 			OsuBot osubot = new OsuBot(osuUser);
 			
 			// Connexion a l'IRC d'osu!
+			System.out.println("Connecting to IRC server...");
 			osubot.connect("irc.ppy.sh",6667,osuPassword);
+			System.out.println("Connected!");
 			ApiReqs apiReq = new ApiReqs(apiKey);
 			
 			jsonDecoder = new TraitementJson();
