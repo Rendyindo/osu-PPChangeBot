@@ -66,17 +66,26 @@ public class mainBot {
 			       				double PPdiff = Math.round((NewPP - PPs)*100.00)/100.00;
 			       				int NewRank = jsonDecoder.getRank();
 			       				int rankDiff = 0;
+			       				if(NewPP != PPs){
+			       					if(NewPP>PPs){
+			       						osubot.sendMessage(osuUser, "Your PPs changed! ("+PPdiff+" gained). New PP amount : "+NewPP+".");
+			       					}
+			       					else{
+			       						osubot.sendMessage(osuUser, "Your PPs changed! ("+PPdiff+" lost). New PP amount : "+NewPP+".");
+			       					}
+			       				}
+			       				else osubot.sendMessage(osuUser, "Your PP did not change during last play.");
 			       				if(NewRank != rank){
 			       					if(NewRank>rank){
 			       						rankDiff = NewRank - rank;
-			       						osubot.sendMessage(osuUser, "Your PPs changed! ("+PPdiff+") New PP amont : "+NewPP+". New rank : #"+NewRank+" ("+rankDiff+" lost)");
+			       						osubot.sendMessage(osuUser, "Your rank changed! New rank : #"+NewRank+" ("+rankDiff+" lost)");
 			       					}
 			       					else{
 			       						rankDiff = rank - NewRank;
-			       						osubot.sendMessage(osuUser, "Your PPs changed! ("+PPdiff+") New PP amont : "+NewPP+". New rank : #"+NewRank+" ("+rankDiff+" gained)");
+			       						osubot.sendMessage(osuUser, "Your rank changed! New rank : #"+NewRank+" ("+rankDiff+" gained)");
 			       					}
 			       				}
-			       				else osubot.sendMessage(osuUser, "Your PPs changed! ("+PPdiff+") New PP amont : "+NewPP+". Your rank did not change.");
+			       				else osubot.sendMessage(osuUser, "Your rank did not change during last play.");
 			       				PPs = NewPP;
 			       				rank = NewRank;
 			       			}
