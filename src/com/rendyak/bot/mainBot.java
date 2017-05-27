@@ -1,8 +1,8 @@
-package com.arnold0.bot;
+package com.rendyak.bot;
 
-import com.arnold0.traitement.ApiReqs;
-import com.arnold0.traitement.SettingsFile;
-import com.arnold0.traitement.TraitementJson;
+import com.rendyak.traitement.ApiReqs;
+import com.rendyak.traitement.SettingsFile;
+import com.rendyak.traitement.TraitementJson;
 
 public class mainBot {
 	private static String osuUser;

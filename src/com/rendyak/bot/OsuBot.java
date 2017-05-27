@@ -1,4 +1,4 @@
-package com.arnold0.bot;
+package com.rendyak.bot;
 
 import org.jibble.pircbot.*;
 
