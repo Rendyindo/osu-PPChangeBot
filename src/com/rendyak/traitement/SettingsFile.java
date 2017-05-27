@@ -51,6 +51,23 @@ public class SettingsFile {
 			// On retourne dans la console un message indiquant que le bot ne fonctionne pas sans celui-ci.
 			System.out.println("File config.txt not found. The program will not work without this file.");
 		}
+		System.out.println("Config loaded!");
+		System.out.println("Configuration:");
+		System.out.println("Username: "+osuUser+"");
+		System.out.println("IRC Password: "+osuPassword+"");
+		System.out.println("API Key: "+apiKey+"");
+		if(mode.equals(0)){
+			System.out.println("Mode: osu!Standard");
+		}
+		if(mode.equals(1)){
+			System.out.println("Mode: Taiko");
+		}
+		if(mode.equals(2)){
+			System.out.println("Mode: Catch the Beat");
+		}
+		if(mode.equals(3)){
+			System.out.println("Mode: osu!mania");
+		}
 	}
 
 	// Getters pour récupèrer les paramètres.
