@@ -20,6 +20,7 @@ public class SettingsFile {
 		try {
 			scanner = new Scanner(new File(filePath));
 			// On indique que l'on charge le fichier
+			System.out.println("----------------------------------");
 			System.out.println("Config file loading...");
 			// Tnat qu'il reste des lignes
 			while (scanner.hasNextLine()) {
@@ -52,6 +53,7 @@ public class SettingsFile {
 			System.out.println("File config.txt not found. The program will not work without this file.");
 		}
 		System.out.println("Config loaded!");
+		System.out.println("----------------------------------");
 		System.out.println("Configuration:");
 		System.out.println("Username: "+osuUser+"");
 		System.out.println("IRC Password: "+osuPassword+"");

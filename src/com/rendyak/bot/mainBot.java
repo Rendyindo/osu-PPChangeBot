@@ -19,6 +19,7 @@ public class mainBot {
 	public static void main(String[] args) throws Exception {
         
 		//On lit le fichier de config
+		System.out.println("osu!PP Change Bot is now starting...");
 		SettingsFile.readConfig();
 		
 		//Si les paramètres requis ne sont pas manquants
@@ -32,6 +33,7 @@ public class mainBot {
 			OsuBot osubot = new OsuBot(osuUser);
 			
 			// Connexion a l'IRC d'osu!
+			System.out.println("----------------------------------");
 			System.out.println("Connecting to IRC server...");
 			osubot.connect("irc.ppy.sh",6667,osuPassword);
 			System.out.println("Connected!");
@@ -56,8 +58,9 @@ public class mainBot {
 			       			PPs = jsonDecoder.getPP();
 			       			rank = jsonDecoder.getRank();
 			       			osubot.sendMessage(osuUser, "Welcome to PPChangeBot, "+osuUser+"!");
-			       			osubot.sendMessage(osuUser, "This bot is based on arnold0 PP change bot.");
+			       			osubot.sendMessage(osuUser, "This bot created by [https://osu.ppy.sh/u/Error- Error-] and its based on arnold0 PP change bot.");
 							osubot.sendMessage(osuUser, "Your current PPs are : "+PPs+". Your current rank is #"+rank+".");
+							System.out.println("----------------------------------");
 							System.out.println("PPChangeBot is now running and will check the API for PP change every 5 seconds.");
 							System.out.println("You should have recieved a message in game. If not, please check the config file for errors.");
 							justStarted = false;
@@ -68,6 +71,7 @@ public class mainBot {
 			       				double PPdiff = Math.round((NewPP - PPs)*100.00)/100.00;
 			       				int NewRank = jsonDecoder.getRank();
 			       				int rankDiff = 0;
+			       				System.out.println("----------------------------------");
 			       				if(NewPP != PPs){
 			       					if(NewPP>PPs){
 			       						osubot.sendMessage(osuUser, "Your PPs changed! ("+PPdiff+" gained). New PP amount : "+NewPP+".");
@@ -76,7 +80,7 @@ public class mainBot {
 			       						osubot.sendMessage(osuUser, "Your PPs changed! ("+PPdiff+" lost). New PP amount : "+NewPP+".");
 			       					}
 			       				}
-			       				else osubot.sendMessage(osuUser, "Your PP did not change during last play.");
+			       				else osubot.sendMessage(osuUser, "Your PPs did not change during last play.");
 			       				if(NewRank != rank){
 			       					if(NewRank>rank){
 			       						rankDiff = NewRank - rank;
