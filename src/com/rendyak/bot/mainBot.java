@@ -71,7 +71,7 @@ public class mainBot {
 			       				double PPdiff = Math.round((NewPP - PPs)*100.00)/100.00;
 			       				int NewRank = jsonDecoder.getRank();
 			       				int rankDiff = 0;
-			       				System.out.println("----------------------------------");
+			       				osubot.sendMessage(osuUser, "----------------------------------");
 			       				if(NewPP != PPs){
 			       					if(NewPP>PPs){
 			       						osubot.sendMessage(osuUser, "Your PPs changed! ("+PPdiff+" gained). New PP amount : "+NewPP+".");
