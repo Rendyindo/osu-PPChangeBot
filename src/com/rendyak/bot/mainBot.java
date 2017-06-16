@@ -33,6 +33,7 @@ public class mainBot {
 			OsuBot osubot = new OsuBot(osuUser);
 			
 			// Connexion a l'IRC d'osu!
+			while(shouldLoop){
 			System.out.println("----------------------------------");
 			System.out.println("Connecting to IRC server...");
 			osubot.connect("irc.ppy.sh",6667,osuPassword);
@@ -98,18 +99,16 @@ public class mainBot {
 			       		}
 		        	}
 		        	else {
-			       		shouldLoop = false;
 			       		System.out.println("An error occured, check the informations in the config file are correct and you are connected to the internet.");
 			      	}
 			    }
 				else {
-					shouldLoop = false;
 					System.out.println("An error occured, check the informations in the config file are correct and you are connected to the internet.");
 				}
 				Thread.sleep(5000);
 			}
 		}
-			
-		else System.out.println("Config file is incomplete or invalid. The bot will now stop.");
+		}	
+		else System.out.println("Config file is incomplete or invalid. The bot will now restart.");
     }
 }
