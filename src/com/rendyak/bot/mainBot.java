@@ -59,7 +59,7 @@ public class mainBot {
 			       			PPs = jsonDecoder.getPP();
 			       			rank = jsonDecoder.getRank();
 			       			osubot.sendMessage(osuUser, "Welcome to PPChangeBot, "+osuUser+"!");
-			       			osubot.sendMessage(osuUser, "This bot created by [https://osu.ppy.sh/u/Error- Error-] and its based on arnold0 PP change bot.");
+			       			osubot.sendMessage(osuUser, "This bot is created by [https://osu.ppy.sh/u/Error- Error-] and based on arnold0 PP change bot.");
 							osubot.sendMessage(osuUser, "Your current PPs are : "+PPs+". Your current rank is #"+rank+".");
 							System.out.println("----------------------------------");
 							System.out.println("PPChangeBot is now running and will check the API for PP change every 5 seconds.");
@@ -99,16 +99,17 @@ public class mainBot {
 			       		}
 		        	}
 		        	else {
-			       		System.out.println("An error occured, check the informations in the config file are correct and you are connected to the internet.");
+			       		System.out.println("An error occured, the bot will now redo last job.");
 			      	}
 			    }
 				else {
-					System.out.println("An error occured, check the informations in the config file are correct and you are connected to the internet.");
+					System.out.println("An error occured, the bot will now redo last job.");
 				}
 				Thread.sleep(5000);
 			}
 		}
 		}	
-		else System.out.println("Config file is incomplete or invalid. The bot will now restart.");
+		else System.out.println("Config file is incomplete or invalid. The bot will now exit.");
+		shouldLoop = false;
     }
 }
