@@ -13,8 +13,10 @@ public class mainBot {
 	private static int rank;
 	private static TraitementJson jsonDecoder;
 	private static String Json;
+	private static String Json2;
 	private static boolean shouldLoop = true;
 	private static boolean justStarted = true;
+	private static double lastpp;
 	
 	public static void main(String[] args) throws Exception {
         
@@ -52,12 +54,14 @@ public class mainBot {
 				// On verifie que Json n'est pas null pour être sur qu'il n'y a pas eu d'erreur
 				if(Json!=null){
 			       	// On décode le Json retourné par l'API
-			       	boolean success = jsonDecoder.decode(Json);
+					Json2 = apiReq.sendGetRecent(osuUser, mode);
+			       	boolean success = jsonDecoder.decode(Json, Json2, osuUser, mode);
 			       	// Si le decodage a bien retourné un String (Qui contient les infos de la map)
 			       	if (success) {
 			       		if(justStarted) {
 			       			PPs = jsonDecoder.getPP();
 			       			rank = jsonDecoder.getRank();
+			       			lastpp = jsonDecoder.getmapPP();
 			       			osubot.sendMessage(osuUser, "Welcome to PPChangeBot, "+osuUser+"!");
 			       			osubot.sendMessage(osuUser, "This bot is created by [https://osu.ppy.sh/u/Error- Error-] and based on arnold0 PP change bot.");
 							osubot.sendMessage(osuUser, "Your current PPs are : "+PPs+". Your current rank is #"+rank+".");
@@ -72,10 +76,12 @@ public class mainBot {
 			       				double PPdiff = Math.round((NewPP - PPs)*100.00)/100.00;
 			       				int NewRank = jsonDecoder.getRank();
 			       				int rankDiff = 0;
+			       				lastpp = jsonDecoder.getmapPP();
 			       				osubot.sendMessage(osuUser, "----------------------------------");
 			       				if(NewPP != PPs){
 			       					if(NewPP>PPs){
 			       						osubot.sendMessage(osuUser, "Your PPs changed! ("+PPdiff+" gained). New PP amount : "+NewPP+".");
+			       						osubot.sendMessage(osuUser, "Last play was "+lastpp+"pp.");
 			       					}
 			       					else{
 			       						osubot.sendMessage(osuUser, "Your PPs changed! ("+PPdiff+" lost). New PP amount : "+NewPP+".");
@@ -111,5 +117,6 @@ public class mainBot {
 		}	
 		else System.out.println("Config file is incomplete or invalid. The bot will now exit.");
 		shouldLoop = false;
-    }
+    
+	}
 }
