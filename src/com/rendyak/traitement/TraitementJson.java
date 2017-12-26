@@ -54,36 +54,6 @@ public class TraitementJson {
 		return success;
 	}
 	
-	public boolean decodelastpp (String sJSON, String osuUser, String mode)
-	{
-		boolean success;
-		try{
-			// On extrait un JsonArray depuis le string retourné par l'API
-			JSONArray jsonArr = new JSONArray(sJSON);
-			// On récupère le premier Json objet ans cet array
-			JSONObject json = jsonArr.getJSONObject(0);
-			// On récupère toutes les données dont on a besoin
-			String strmapid = json.getString("beatmap_id");
-			LMAO = ApiReqs.sendGetScores(osuUser, mode, strmapid);
-			JSONArray jsonArr2 = new JSONArray(LMAO);
-			JSONObject json2 = jsonArr2.getJSONObject(0);
-			mapPP = json2.getInt("pp");
-			
-			if(mapPP!=0)
-			{
-				success = true;
-			}
-			else success = false;
-		
-		}
-		catch(Exception e)
-		{
-			success = false;
-		}
-		// Sinon on retourne notre String.
-		return success;
-	}
-	
 	public double getPP()
 	{
 		return pp;
