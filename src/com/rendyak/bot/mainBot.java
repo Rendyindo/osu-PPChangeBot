@@ -77,11 +77,15 @@ public class mainBot {
 			       				int NewRank = jsonDecoder.getRank();
 			       				int rankDiff = 0;
 			       				lastpp = jsonDecoder.getmapPP();
+			       				String mapid = jsonDecoder.getmapid();
+			       				String artist = jsonDecoder.getmapartist();
+			       				String title = jsonDecoder.getmaptitle();
+			       				String diffname = jsonDecoder.getdiffname();
 			       				osubot.sendMessage(osuUser, "----------------------------------");
 			       				if(NewPP != PPs){
 			       					if(NewPP>PPs){
 			       						osubot.sendMessage(osuUser, "Your PPs changed! ("+PPdiff+" gained). New PP amount : "+NewPP+".");
-			       						osubot.sendMessage(osuUser, "Last play was "+lastpp+"pp.");
+			       						osubot.sendMessage(osuUser, "Last play was "+lastpp+"pp on [https://osu.ppy.sh/b/"+mapid+" "+artist+" - "+title+" ["+diffname+"]].");
 			       					}
 			       					else{
 			       						osubot.sendMessage(osuUser, "Your PPs changed! ("+PPdiff+" lost). New PP amount : "+NewPP+".");

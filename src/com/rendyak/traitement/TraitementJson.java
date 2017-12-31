@@ -8,7 +8,12 @@ public class TraitementJson {
 	private static double pp;
 	private static int rank;
 	private static double mapPP;
-	private static String LMAO;
+	private static String ScoreJSON;
+	private static String MapInfo;
+	private static String artist;
+	private static String title;
+	private static String strmapid;
+	private static String diffname;
 	
 	public boolean decode (String sJSON, String sJSON2, String osuUser, String mode)
 	{
@@ -34,11 +39,19 @@ public class TraitementJson {
 			// On récupère le premier Json objet ans cet array
 			JSONObject json2 = jsonArr2.getJSONObject(0);
 			// On récupère toutes les données dont on a besoin
-			String strmapid = json2.getString("beatmap_id");
-			LMAO = ApiReqs.sendGetScores(osuUser, mode, strmapid);
-			JSONArray jsonArr3 = new JSONArray(LMAO);
+			strmapid = json2.getString("beatmap_id");
+			ScoreJSON = ApiReqs.sendGetScores(osuUser, mode, strmapid);
+			JSONArray jsonArr3 = new JSONArray(ScoreJSON);
 			JSONObject json3 = jsonArr3.getJSONObject(0);
 			String strmapPP = json3.getString("pp");
+			
+			MapInfo = ApiReqs.sendGetBeatmapInfo(strmapid);
+			JSONArray jsonArr4 = new JSONArray(MapInfo);
+			JSONObject json4 = jsonArr4.getJSONObject(0);
+			artist = json4.getString("artist");
+			title = json4.getString("title");
+			diffname = json4.getString("version");
+			
 			
 			if(strmapPP!=null)
 			{
@@ -67,5 +80,25 @@ public class TraitementJson {
 	public double getmapPP()
 	{
 		return mapPP;
+	}
+	
+	public String getmapartist()
+	{
+		return artist;
+	}
+	
+	public String getmaptitle()
+	{
+		return title;
+	}
+	
+	public String getmapid()
+	{
+		return strmapid;
+	}
+	
+	public String getdiffname()
+	{
+		return diffname;
 	}
 }
