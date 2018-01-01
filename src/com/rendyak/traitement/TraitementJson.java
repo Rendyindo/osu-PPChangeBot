@@ -28,11 +28,7 @@ public class TraitementJson {
 			pp = Double.parseDouble(strPP);
 			rank = json.getInt("pp_rank");
 			
-			if(pp!=0 && rank != 0)
-			{
-				success = true;
-			}
-			else success = false;
+			Thread.sleep(1000);
 			
 			// On extrait un JsonArray depuis le string retourné par l'API
 			JSONArray jsonArr2 = new JSONArray(sJSON2);
@@ -45,6 +41,8 @@ public class TraitementJson {
 			JSONObject json3 = jsonArr3.getJSONObject(0);
 			String strmapPP = json3.getString("pp");
 			
+			Thread.sleep(1000);
+			
 			MapInfo = ApiReqs.sendGetBeatmapInfo(strmapid);
 			JSONArray jsonArr4 = new JSONArray(MapInfo);
 			JSONObject json4 = jsonArr4.getJSONObject(0);
@@ -52,11 +50,16 @@ public class TraitementJson {
 			title = json4.getString("title");
 			diffname = json4.getString("version");
 			
-			
 			if(strmapPP!=null)
 			{
 				mapPP = Double.parseDouble(strmapPP);
 			}
+			
+			if(pp!=0 && rank != 0 && artist!=null && title!=null)
+			{
+				success = true;
+			}
+			else success = false;
 			
 		}
 		catch(Exception e)
